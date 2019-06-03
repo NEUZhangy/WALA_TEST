@@ -184,34 +184,34 @@ public class PDFSlice {
                 Assertions.UNREACHABLE();
             }
             // create a dot representation.
-//            String psFile = p.getProperty(WalaProperties.OUTPUT_DIR) + File.separatorChar + PDF_FILE;
+            String psFile = p.getProperty(WalaProperties.OUTPUT_DIR) + File.separatorChar + PDF_FILE;
 //      String dotExe = p.getProperty(WalaExamplesProperties.DOT_EXE);
-//            String dotExe = "C:/Program Files (x86)/Graphviz2.38/bin/dot.exe";
-            Statement keyStatement = null;
-            boolean find = false;
-            for (Statement statement: g) {
-                switch(statement.getKind()) {
-                    case NORMAL:
-                        if (!find) keyStatement = statement;
-                        break;
-                    case PARAM_CALLER:
-                        keyStatement = statement;
-                        find = true;
-                        break;
-                }
-            }
-            SymbolTable symbolTable = keyStatement.getNode().getIR().getSymbolTable();
-            for(int i = 1; i < symbolTable.getMaxValueNumber(); i++) {
-                if (symbolTable.isConstant(i)) {
-                    parameterList.add(symbolTable.getStringValue(i));
-                }
-            }
+            String dotExe = "C:/Program Files (x86)/Graphviz2.38/bin/dot.exe";
+//            Statement keyStatement = null;
+//            boolean find = false;
+//            for (Statement statement: g) {
+//                switch(statement.getKind()) {
+//                    case NORMAL:
+//                        if (!find) keyStatement = statement;
+//                        break;
+//                    case PARAM_CALLER:
+//                        keyStatement = statement;
+//                        find = true;
+//                        break;
+//                }
+//            }
+//            SymbolTable symbolTable = keyStatement.getNode().getIR().getSymbolTable();
+//            for(int i = 1; i < symbolTable.getMaxValueNumber(); i++) {
+//                if (symbolTable.isConstant(i)) {
+//                    parameterList.add(symbolTable.getStringValue(i));
+//                }
+//            }
 
-//            DotUtil.dotify(g, makeNodeDecorator(), PDFTypeHierarchy.DOT_FILE, psFile, dotExe);
+            DotUtil.dotify(g, makeNodeDecorator(), PDFTypeHierarchy.DOT_FILE, psFile, dotExe);
 //            parameterList.stream().forEach(x -> System.out.println(x));
             // fire off the PDF viewer
-            //String gvExe = p.getProperty(WalaExamplesProperties.PDFVIEW_EXE);
-//            String gvExe = "C:/Program Files (x86)/Foxit Software/Foxit Reader/FoxitReader.exe";
+//            String gvExe = p.getProperty(WalaExamplesProperties.PDFVIEW_EXE);
+            String gvExe = "C:/Program Files (x86)/Foxit Software/Foxit Reader/FoxitReader.exe";
 //      return
 //            PDFViewUtil.launchPDFView(psFile, gvExe);
             return null;
